@@ -17,5 +17,6 @@ O [LumisXP](https://lumisxp.lumis.com.br/) depende de alguns softwares para seu 
 A stack completa
 ----------------
 Para executar a stack completa utilizei o docker-compose.
+
 Segue o github com o docker-compose.yml 
 [github](https://github.com/jeduoliveira/lumisportal-docker-compose-11.2.0)
