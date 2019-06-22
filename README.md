@@ -12,7 +12,7 @@ Utilizada por grandes empresas dos mais variados segmentos de mercado, a platafo
 
 Dependências
 ------------
-O LumisXP depende de alguns softwares para seu pleno funcionamento. É necessário ter um elasticsearch, apache/nginx e um banco de dados, iremos utilizar o MySQL.
+O [LumisXP](https://lumisxp.lumis.com.br/) depende de alguns softwares para seu pleno funcionamento. É necessário ter instalado um [elasticsearch](https://www.elastic.co/pt/products/elasticsearch), [apache](https://httpd.apache.org/) / [nginx](https://www.nginx.com/) e um banco de dados, iremos utilizar o [MySQL](https://www.mysql.com/).
 
 A stack completa
 ----------------
