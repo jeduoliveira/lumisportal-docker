@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- $Revision: 21582 $ $Date: 2018-07-27 19:25:37 +0000 (Fri, 27 Jul 2018) $ -->
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- Database connection settings -->
+		
+		<!-- MS SQL Server -->
+		<!-- 
+		<property name="dialect">org.hibernate.dialect.SQLServerDialect</property>
+		<property name="connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
+		<property name="connection.username">sa</property>
+		<property name="connection.password">lumis</property>
+		<property name="connection.url">jdbc:jtds:sqlserver://localhost:1433;databaseName=lumisportal;instanceName=LUMIS;useLOBs=false;sendStringParametersAsUnicode=false</property>
+		<property name="hikari.connectionTestQuery">select 1</property>
+		-->
+		 
+		<!-- Oracle -->
+		<!-- 
+		<property name="dialect">lumis.portal.dao.hibernate.Oracle10gDialect</property>
+		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<property name="connection.username">lumisportal</property>
+		<property name="connection.password">lumisportal</property>
+		<property name="connection.url">jdbc:oracle:thin:@localhost:1521:orcl</property>
+		<property name="connection.defaultRowPrefetch">50</property>
+		-->
+
+		<!-- MySQL -->
+		
+		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.username">LUMIS_DB_USER</property>
+		<property name="connection.password">LUMIS_DB_PASSWORD</property>
+		<property name="connection.url">jdbc:mysql://LUMIS_DB_HOST:LUMIS_DB_PORT/LUMIS_DB_NAME?characterEncoding=UTF-8&amp;useSSL=false&amp;allowPublicKeyRetrieval=true&amp;useConfigs=maxPerformance&amp;prepStmtCacheSize=500&amp;prepStmtCacheSqlLimit=2048</property>
+		<property name="connection.isolation">2</property>
+	
+
+		<!-- Hikari connection pooling configuration (For more information see https://github.com/brettwooldridge/HikariCP#configuration-knobs-baby) -->
+		<property name="connection.provider_class">lumis.portal.dao.hibernate.HikariConnectionProvider</property>
+		<property name="hikari.autoCommit">false</property>
+		<!-- maxLifetime should be at least 30 seconds less than database or infrastructure connection time limit -->
+		<property name="hikari.maxLifetime">1800000</property>
+		<property name="hikari.idleTimeout">600000</property>
+		<property name="hikari.minimumIdle">LUMIS_DB_MINIMUM_IDLE</property>
+		<property name="hikari.maximumPoolSize">LUMIS_DB_MAXIMUM_POOL_SIZE</property>
+		<property name="hikari.registerMbeans">true</property>
+		<property name="hikari.connectionTimeout">10000</property>
+		<property name="hikari.poolName">LumisPortal</property>
+		
+		<!-- To use application server's datasource, remove all above connection.*, hikari.*, dbcp.* and c3p0.* properties
+			and use the property commented below:
+
+			<property name="connection.datasource">java:/comp/env/jdbc/portal</property>
+				
+			Add the following tag to the web.xml file:
+			
+			<resource-ref>
+				<description>Portal DataSource</description>
+				<res-ref-name>jdbc/portal</res-ref-name>
+				<res-type>javax.sql.DataSource</res-type>
+				<res-auth>Container</res-auth>
+			</resource-ref>
+			
+			For enabling the datasource in the Tomcat, add a tag similar to the example below inside the 
+			application's Context tag and put the jdbc driver JAR file inside tomcat/common/lib.
+			If your JDBC driver does not support Connection.isValid method, must also be included in Resource the 
+			attribute validationQuery with a value that is a query that may be used to validate the connection.
+			For example, for MS SQL Server could be used: validationQuery="select 1"
+			More details and examples in http://tomcat.apache.org/tomcat-8.0-doc/jndi-datasource-examples-howto.html
+			
+		    <Resource name="jdbc/portal" type="javax.sql.DataSource" 
+			    maxTotal="100" maxIdle="30" maxWaitMillis="10000"
+			    auth="Container" driverClassName="my.database.Driver" 
+			    url="jdbc:my:database:url" username="username" password="password" />
+		-->
+		
+		<property name="jdbc.batch_size">0</property>
+		<property name="max_fetch_depth">3</property>
+		<property name="cache.use_query_cache">true</property>
+		
+		<!-- second-level cache -->
+		<property name="cache.provider_class">lumis.portal.dao.hibernate.PortalCacheProvider</property>
+		
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!-- $Revision: 22420 $ $Date: 2019-02-19 19:21:02 +0000 (Tue, 19 Feb 2019) $ -->
+<portalConfig>
+	<!-- Set the serverId below to a unique server identifier. -->
+	<serverId>LUMIS_SERVER_ID</serverId>
+	<!--Uncomment to customize the Wurfl device detection 
+	that will detect what device is requesting a specific URL.
+	The first file is the root devices node, the others are devices patchs.
+    <deviceDetection>
+	    <deviceDefinitions>
+	        <file>wurfl.zip</file>
+	        <file>patch1.xml</file>
+	        <file>patch2.xml</file>
+	    </deviceDefinitions>
+     </deviceDetection>
+	-->
+	<!-- Uncomment to enable customized default page DocType. 
+	Valid values are: XHTML10_STRICT, XHTML10_TRANSITIONAL, XHTML10_TRANSITIONAL, 
+	XHTML10_FRAMESET, XHTML11_DTD, XHTMLBASIC10_DTD, XHTMLBASIC11_DTD,
+	HTML401_STRICT, HTML401_TRANSITIONAL, HTML401_FRAMESET, HTML20_DTD, HTML32_DTD, HTML5 and NONE.
+	If not specified the default value is HTML5.
+	<defaultPageDocType>HTML5</defaultPageDocType>
+	-->
+	<!-- Uncomment to configure the portal cache. OverflowType may be 'none', 'weak' or 'soft'. Default is 'soft'.
+	<cache>
+		<defaultCapacity>1000</defaultCapacity>
+		<overflowType>soft</overflowType>
+		<standardMembershipBulkLoadEnabled>true</standardMembershipBulkLoadEnabled>
+	</cache>
+	-->
+	<!-- Uncomment to specify a default lock deadline (in minutes).
+	<locks>
+		<defaultDeadline>60</defaultDeadline>
+	</locks>
+	-->
+	<transaction>
+		<!-- Uncomment to configure the logging of long-lived transactions.
+		If a transaction is not disposed within the specified timeout period 
+		after its creation, a warning level message is sent to the portal log.
+		The value is in seconds. A non-positive value disables this logging
+		feature. Default value is 600 seconds. 
+		(it is possible that transactions that last up to 25% more than the 
+		configured timeout are not logged, due to performance optimizations)  	
+		<logAbandonedTimeout>600</logAbandonedTimeout>
+		-->
+	</transaction>
+	<!-- Uncomment to enable customized portal clock interval.
+	<portalClock>
+		<enable>1</enable>
+		<tickInterval>30</tickInterval>
+	</portalClock>
+	-->
+	<!-- Uncomment to change default session timeout.
+	<sessionTimeout>30</sessionTimeout>
+	-->
+	<fileUpload>
+		<!-- Uncomment to limit max upload size in bytes
+		<maxSize>-1</maxSize>
+		-->
+		<!-- Uncomment to specify file upload extensions that are denied. 
+			 The value is a regular expression to be matched against the file extension.
+		<deniedExtensions>jspx?|php\d?|phtml|pwml|inc|aspx?|ascx|cfm|cfc|pl|bat|exe|com|dll|vbs|js|reg|cgi|msi</deniedExtensions>
+		-->
+	</fileUpload>
+	<!-- Uncomment to enable other encryption algorithms.
+		Note that any change may prevent previously encrypted data from being read.
+		It is recommended to increase the key size of AES to 256, but for it to
+		be allowed, it is required to install the 
+		'Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy'
+		in your Java environment. Check your Java vendor documentation for 
+		availability, restrictions and other information.
+	<encryption>
+		<oneWay className="lumis.portal.crypto.MessageDigestCipher">
+			<provider></provider>
+			<algorithm>SHA-512</algorithm>
+		</oneWay>
+		<reversible className="lumis.portal.crypto.SymmetricCipher">
+			<provider></provider>
+			<algorithm>AES</algorithm>
+			<mode>CBC</mode>
+			<padding>PKCS5Padding</padding>
+			<keyGenerationSize>128</keyGenerationSize>
+			<mac>HmacSHA256</mac>
+		</reversible>
+	</encryption>
+	-->
+	<!-- Uncomment to specify a custom interface title bar style.
+	<interfaceTitleBarStyle>lumis/portal/serviceinterface/style/ServiceInterfaceTitleBar.xsl</interfaceTitleBarStyle>
+	 -->
+
+	<security>
+		<!-- Uncomment to configure a HTTP authenticator. 
+			 See LumisXP documentation for details about included authenticators.
+		<httpAuthenticator className="lumis.portal.authentication.http.SpnegoAuthenticator" />
+		-->
+		<!-- Uncomment to configure Kerberos Authentication Protocol. See LumisXP documentation for details. 
+		<kerberos>
+			<configurationFile>security/krb5.conf</configurationFile>
+		</kerberos>
+		-->
+	</security>
+	<!-- Uncomment to specify a custom security alias.
+	<securityAlias></securityAlias>
+	 -->
+
+	<!-- Uncomment to enable customized HTML Generation.  See LumisXP documentation for details. -->
+	<htmlGeneration>
+		<connectTimeout>30000</connectTimeout>
+		<pageRequestTimeout>50000</pageRequestTimeout>
+		<frameworkUrl>http://localhost:8080</frameworkUrl>
+		<htmlCacheLogNavigation>1</htmlCacheLogNavigation>
+		<htmlFileExtension>.htm</htmlFileExtension>
+		<shtmlFileExtension>.shtml</shtmlFileExtension>
+		<ssi>
+			<sendRedirectOnPageNotFound>true</sendRedirectOnPageNotFound>
+			<waitBeforeSendRedirect>500</waitBeforeSendRedirect>
+		</ssi>
+		<expirationLimit>0</expirationLimit>
+	</htmlGeneration>
+	
+	<!-- Uncomment to enable customized error page (relative to frameworkUrl).
+	<errorPage>customizedErrorPage.jsp</errorPage>
+	-->
+
+	<!-- Uncomment to enable multi-server clustering. Confirm that the serverId above is unique for each server.
+	<cluster>
+		<multicast>
+			<mcastAddress>231.12.21.132</mcastAddress>
+			<mcastPort>45566</mcastPort>
+			<bindAddress>127.0.0.1</bindAddress>
+		</multicast>
+	</cluster>
+	-->
+
+	<!-- Uncomment to configure IExecutorManager properties.
+	<executor>
+		<minThreads>5</minThreads>
+		<maxThreads>20</maxThreads>
+	</executor>
+	-->
+	
+	<!-- Uncomment to configure loading message.
+	<loadingHtmlMessage><![CDATA[<img src="#lumFixPathReference-lumis/portal/client/images/Loading.gif-lumFixPathReference#" style="vertical-align: middle;" class="lumLoadingImg" alt="${localize("STR_LOADING")}"/>]]></loadingHtmlMessage>
+	-->
+	
+	<!-- Uncomment for fine tunning XmlUtil internal DocumentBuilder pool
+	<documentBuilderPool>
+		<minSize>10</minSize>
+		<maxSize>100</maxSize>
+		<timeBetweenEvictionRunsMillis>-1</timeBetweenEvictionRunsMillis>
+		<numTestsPerEvictionRun>3</numTestsPerEvictionRun>
+		<minEvictableIdleTimeMillis>1800000</minEvictableIdleTimeMillis>
+	</documentBuilderPool>
+	-->
+
+	<layoutFile>
+		<!-- Uncomment to configure interval for polling layout file for changes.
+			Specify interval in seconds. A value of 0 (zero) disables this polling. 
+			With it disabled, any change to a layout file may require restart 
+			of the portal to be applied.
+			Default value is one second with development mode enabled, and
+			polling disabled with development mode disabled.
+		<pollIntervalSecs>0</pollIntervalSecs>
+		-->
+	</layoutFile>
+	
+	
+	<!-- Uncomment to configure a different file path to the FFMPEG executable encoder/decoder.
+		 An absolute path can be informed replacing the ${lumisdata} by the complete path. The 
+		 ${lumisdata} represents the path of the lumisdata folder. 
+	<fileTransformations>
+		<ffmpegExecutablePath>${lumisdata}/bin/ffmpeg.exe</ffmpegExecutablePath>
+	</fileTransformations>
+	-->
+	
+	
+	<!-- Uncomment to configure cookies generated by LumisXP.
+		The example below contains the default values for each LumisXP cookie.
+		If the <cookies> element is present and uncommented, each <cookie> must
+		be configured or they will default to enabled="true" httpOnly="false".
+	<cookies>
+		<cookie name="lumUserSessionId" enabled="true" httpOnly="true"/>
+		<cookie name="lumUserLocale" enabled="true" httpOnly="false"/>
+		<cookie name="lumUserId" enabled="false" httpOnly="true"/>
+		<cookie name="lumUserLogin" enabled="false" httpOnly="true"/>
+		<cookie name="lumUserName" enabled="true" httpOnly="false"/>
+		<cookie name="lumUserEmail" enabled="false" httpOnly="true"/>
+		<cookie name="lumIsLoggedUser" enabled="true" httpOnly="false"/>
+		<cookie name="lumUserAppId" enabled="true" httpOnly="false"/>
+		<cookie name="lumMonUid" enabled="true" httpOnly="false"/>
+		<cookie name="lumRequestedPage" enabled="true" httpOnly="true"/>
+	</cookies>
+	-->	
+</portalConfig>
