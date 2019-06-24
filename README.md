@@ -20,3 +20,11 @@ Para executar a stack completa utilizei o docker-compose.
 
 Segue o github com o docker-compose.yml 
 [github](https://github.com/jeduoliveira/lumisportal-docker-compose-11.2.0)
+
+Considerações
+-------------
+
+Portas que podem ser expostas
+
+    EXPOSE 8080
+    EXPOSE 8009
