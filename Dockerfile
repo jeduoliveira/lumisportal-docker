@@ -4,7 +4,7 @@ RUN yum install unzip -y \
     && curl https://lumisportal-repo.s3.amazonaws.com/lumisportal_11.2.0.190404.zip --output lumisportal_11.2.0.190404.zip \
     && unzip lumisportal_11.2.0.190404.zip \
     && rm -f lumisportal_11.2.0.190404.zip \
-    && rm -fr lptf opt .LumisPortalFiles setup development .classpath .project readme.txt
+    && rm -fr lptf opt .LumisPortalFiles development .classpath .project readme.txt
     
 FROM centos:centos7.6.1810 as build_tomcat
 RUN mkdir -p /usr/local/tomcat \
@@ -17,7 +17,6 @@ RUN mkdir -p /usr/local/tomcat \
 FROM centos:7.6.1810
 LABEL maintainer="jeduoliveira81@gmail.com"
 LABEL version="1.0"
-
 
 ENV TZ "America/Sao_Paulo"
 ENV ES_HOME /usr/share/elasticsearch
